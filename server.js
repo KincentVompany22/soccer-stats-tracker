@@ -9,6 +9,7 @@ const session = require("express-session")
 
 const authController = require("./controllers/auth.js")
 const gamesController = require("./controllers/games.js")
+const playersController = require("./controllers/players.js")
 
 // Importing Custom Middleware
 const isSignedIn = require("./middleware/is-signed-in.js")
@@ -50,8 +51,10 @@ app.get("/", (req, res) => {
 //   }
 // });
 
+
 app.use(passUserToView)
 app.use("/auth", authController)
+app.use("/players", playersController)
 app.use(isSignedIn)
 app.use("/users/:userId/games", gamesController)
 

@@ -11,6 +11,19 @@
 
 <h1> THIS IS THE MY GAMES PAGE</h1>
 
+<h1> TOTALS </h1>
+<h2> Games: <%= totals.totalGames %> </h2>
+<h2> Goals: <%= totals.totalGoals %> </h2>
+<h2> Assists: <%= totals.totalAssists %> </h2>
+<h2> Wins: <%= totals.totalWins %> </h2>
+<h2> Losses: <%= totals.totalLosses %> </h2>
+<h2> Draws: <%= totals.totalDraws %> </h2>
+
+<h1> AVERAGES </h1>
+<h2> Goals: <%= averages.avgGoals %> </h2>
+<h2> Assists: <%= averages.avgAssists %> </h2>
+<h2> Win Rate: <%= averages.winPercentage %> % </h2>
+
 <ul>
 <% gameStats.forEach((game) => { %>
     <li> <a href="/users/<%= user._id %>/games/<%= game._id %>">

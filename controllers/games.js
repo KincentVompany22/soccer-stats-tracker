@@ -12,8 +12,54 @@ const User = require('../models/user.js')
 router.get("/", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
-        res.render("games/index.ejs", { gameStats: currentUser.gameStats, })
-        // console.log(currentUser.gameStats)
+        const gameStats = currentUser.gameStats
+
+        // CALCS
+        // Totals
+        const totalGames = gameStats.length
+
+        let totalGoals = 0
+            gameStats.forEach((game) => {
+                totalGoals += game.goals
+            })
+
+        let totalAssists = 0
+        gameStats.forEach((game) => {
+            totalAssists += game.assists
+        })
+
+        let totalWins = 0
+        gameStats.forEach((game) => {
+            if (game.result === "Win") {
+                return totalWins += 1
+            }
+        })
+
+        let totalLosses = 0
+        gameStats.forEach((game) => {
+            if (game.result === "Loss") {
+                return totalLosses += 1
+            }
+        })
+
+        let totalDraws = 0
+        gameStats.forEach((game) => {
+            if (game.result === "Draw") {
+                return totalDraws += 1
+            }
+        })
+
+        // Averages
+        const avgGoals = totalGoals / totalGames
+        const avgAssists = totalAssists / totalGames
+        const winPercentage = (totalWins / totalGames)*100
+
+        // Grouping
+        const totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
+        const averages = { avgGoals, avgAssists, winPercentage}
+
+        res.render("games/index.ejs", 
+            { gameStats, totals, averages } )
     } catch (error) {
         console.log(error)
         res.redirect("/")
@@ -27,8 +73,8 @@ router.get("/new", (req, res) => {
 router.get("/:gameId", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
-        const currentGame = currentUser.gameStats.id(req.params.gameId)
-        res.render("games/show.ejs", { gameStats: currentGame })
+        const currentGameStats = currentUser.gameStats.id(req.params.gameId)
+        res.render("games/show.ejs", { currentGameStats })
     } catch (error) {
         console.log(error)
         res.redirect("/")
@@ -91,10 +137,6 @@ router.delete("/:gameId", async (req, res) => {
         res.redirect("/")
     }
 })
-
-
-
-
 
 
 

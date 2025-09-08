@@ -9,20 +9,20 @@
 
 <%- include('../partials/_navbar.ejs') %>
 
-<h1> GAME <%= gameStats.number %> Stats </h1>
+<h1> GAME <%= currentGameStats.number %> Stats </h1>
 
 <ul>
-    <li> <strong>Game #:</strong> <%= gameStats.number %> </li>
-    <li> <strong>Date:</strong> <%= gameStats.date %> </li>
-    <li> <strong>Location:</strong> <%= gameStats.location %> </li>
-    <li> <strong>Result:</strong> <%= gameStats.result %> </li>
-    <li> <strong>GD:</strong> <%= gameStats.goalDiff %> </li>
-    <li> <strong>Goals:</strong> <%= gameStats.goals %> </li>
-    <li> <strong>Assists:</strong> <%= gameStats.assists %> </li>
+    <li> <strong>Game #:</strong> <%= currentGameStats.number %> </li>
+    <li> <strong>Date:</strong> <%= currentGameStats.date %> </li>
+    <li> <strong>Location:</strong> <%= currentGameStats.location %> </li>
+    <li> <strong>Result:</strong> <%= currentGameStats.result %> </li>
+    <li> <strong>GD:</strong> <%= currentGameStats.goalDiff %> </li>
+    <li> <strong>Goals:</strong> <%= currentGameStats.goals %> </li>
+    <li> <strong>Assists:</strong> <%= currentGameStats.assists %> </li>
 </ul>
 
 
-<a href="/users/<%= user._id %>/games/<%= gameStats._id %>/edit">Edit Game Stats</a>
+<a href="/users/<%= user._id %>/games/<%= currentGameStats._id %>/edit">Edit Game Stats</a>
 
 
 </body>

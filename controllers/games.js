@@ -9,7 +9,13 @@ const User = require('../models/user.js')
 
 // GET ROUTES
 
+router.get("/", (req, res) => {
+    res.render("games/index.ejs")
+})
 
+router.get("/new", (req, res) => {
+    res.render("games/new.ejs")
+})
 
 
 

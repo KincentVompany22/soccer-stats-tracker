@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Item</title>
+  </head>
+  <body>
+
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Add a Game</h1>
+
+    <form action="/users/<%= user._id %>/games" method = "POST">
+        
+        <label for="number">Game Number:</label>
+        <input type="number" name="number" id="number" />
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" />
+
+        <label for="location">Location:</label>
+        <select id="location" name="location">
+            <option value="Brickell S&P">Brickell S&P</option>
+            <option value="Stadio">Stadio</option>
+            <option value="Downtown Soccer">Downtown Soccer</option>
+        </select>
+
+        <label for="result">Result:</label>
+        <select id="result" name="result">
+            <option value="Win">Win</option>
+            <option value="Loss">Loss</option>
+            <option value="Draw">Draw</option>
+        </select>
+
+        <label for="goalDiff">Goal Difference</label>
+        <input type="number" name="goalDiff" id="goalDiff" />
+
+        <label for="goals">Goals:</label>
+        <input type="goals" name="goals" id="goals" />
+
+        <label for="assists">Assists:</label>
+        <input type="assists" name="assists" id="assists" />
+
+        <button type="submit">Add Game Stats</button>
+
+    </form>
+
+  </body>
+</html>

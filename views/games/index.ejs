@@ -10,7 +10,19 @@
 <%- include('../partials/_navbar.ejs') %>
 
 <h1> THIS IS THE MY GAMES PAGE</h1>
-<h2> Shows the logged in players game stats summary</h2>
+
+<ul>
+<% gameStats.forEach((game) => { %>
+    <li> Game <%= game.number %> - <%= game.date %> - <%= game.result %> </li>
+<% }) %>
+</ul>
+
+
+
+
+
+
+<a href="/users/<%= user._id %>/games/new">Add New Game Stats</a>
 
 
 </body>

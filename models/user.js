@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const statsSchema = new mongoose.Schema ({
+const gameStatsSchema = new mongoose.Schema ({
   number: {
     type: Number,
   },
@@ -35,9 +35,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  stats: [statsSchema]
+  gameStats: [gameStatsSchema]
 })
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model("User", userSchema)
 
 module.exports = User

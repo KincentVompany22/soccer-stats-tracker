@@ -9,14 +9,35 @@ const User = require('../models/user.js')
 
 // GET ROUTES
 
-router.get("/", (req, res) => {
-    res.render("games/index.ejs")
+router.get("/", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        res.render("games/index.ejs", { gameStats: currentUser.gameStats, })
+        // console.log(currentUser.gameStats)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
 })
 
 router.get("/new", (req, res) => {
     res.render("games/new.ejs")
 })
 
+// POST ROUTES
+
+router.post("/", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        currentUser.gameStats.push(req.body)
+        // console.log(req.body)
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/games`)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
 
 
 module.exports = router

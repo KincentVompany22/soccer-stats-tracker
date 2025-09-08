@@ -11,7 +11,13 @@
 
 <h1> THIS IS THE COMMUNITY PAGE </h1>
 
+<ul>
 
+    <% allPlayers.forEach((player) => { %>
+      <li> <a href="/players/<%= player._id %>"> <%= player.username %> </a> </li>
+    <% }) %>
+
+</ul>
 
 
 

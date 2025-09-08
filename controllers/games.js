@@ -59,7 +59,8 @@ router.get("/", async (req, res) => {
         const averages = { avgGoals, avgAssists, winPercentage}
 
         res.render("games/index.ejs", 
-            { gameStats, totals, averages } )
+            { currentUser, gameStats, totals, averages } )
+
     } catch (error) {
         console.log(error)
         res.redirect("/")

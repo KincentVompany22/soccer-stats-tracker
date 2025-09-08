@@ -35,6 +35,17 @@ router.get("/:gameId", async (req, res) => {
     }
 })
 
+router.get("/:gameId/edit", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const currentGame = currentUser.gameStats.id(req.params.gameId)
+        res.render("games/edit.ejs", { gameStats: currentGame })
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+} )
+
 
 
 // POST ROUTES
@@ -51,6 +62,30 @@ router.post("/", async (req, res) => {
         res.redirect("/")
     }
 })
+
+
+// PUT ROUTES
+
+router.put("/:gameId", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const currentGame = currentUser.gameStats.id(req.params.gameId)
+        // console.log(req.params.gameId)
+        currentGame.set(req.body)
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/games/${currentGame._id}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
+
+
+
+
+
+
+
 
 
 module.exports = router

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Game</title>
+  </head>
+  <body>
+
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Edit Game</h1>
+
+    <form action="/users/<%= user._id %>/games/<%= gameStats._id %>?_method=PUT" method = "POST">
+        
+        <label for="number">Game Number:</label>
+        <input type="number" name="number" id="number" value="<%= gameStats.number %>" />
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" value="<%= gameStats.date %>" />
+
+        <label for="location">Location:</label>
+        <select id="location" name="location">
+            <option value="Brickell S&P" <%= gameStats.location === "Brickell S&P" ? "selected" : "" %> > Brickell S&P </option>
+            <option value="Stadio" <%= gameStats.location === "Stadio" ? "selected" : "" %> > Stadio </option>
+            <option value="Downtown Soccer" <%= gameStats.location === "Downtown Soccer" ? "selected" : "" %> > Downtown Soccer </option>
+        </select>
+
+        <label for="result">Result:</label>
+        <select id="result" name="result">
+            <option value="Win"  <%= gameStats.result === "Win"  ? "selected" : "" %> > Win </option>
+            <option value="Loss" <%= gameStats.result === "Loss" ? "selected" : "" %> > Loss </option>
+            <option value="Draw" <%= gameStats.result === "Draw" ? "selected" : "" %> > Draw </option>
+
+        </select>
+
+        <label for="goalDiff">Goal Difference</label>
+        <input type="number" name="goalDiff" id="goalDiff" value="<%= gameStats.goalDiff %>" />
+
+        <label for="goals">Goals:</label>
+        <input type="goals" name="goals" id="goals" value="<%= gameStats.goals %>" />
+
+        <label for="assists">Assists:</label>
+        <input type="assists" name="assists" id="assists" value="<%= gameStats.assists %>" />
+
+        <button type="submit">Edit Game Stats</button>
+
+    </form>
+
+  </body>
+</html>

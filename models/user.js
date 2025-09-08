@@ -1,6 +1,32 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const userSchema = mongoose.Schema({
+const statsSchema = new mongoose.Schema ({
+  number: {
+    type: Number,
+  },
+  date: {
+    type: Date,
+  }, 
+  location: {
+    type: String,
+    enum: ["Brickell S&P", "Stadio", "Downtown Soccer"],
+  },
+  result: {
+    type: String,
+    enum: ["Win", "Loss", "Draw"],
+  },
+  goalDiff: {
+    type: Number,
+  },
+  goals: {
+    type: Number,
+  },
+  assists: {
+    type: Number,
+  }
+})
+
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -9,8 +35,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-});
+  stats: [statsSchema]
+})
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
 
-module.exports = User;
+module.exports = User

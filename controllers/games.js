@@ -46,8 +46,6 @@ router.get("/:gameId/edit", async (req, res) => {
     }
 } )
 
-
-
 // POST ROUTES
 
 router.post("/", async (req, res) => {
@@ -63,7 +61,6 @@ router.post("/", async (req, res) => {
     }
 })
 
-
 // PUT ROUTES
 
 router.put("/:gameId", async (req, res) => {
@@ -74,6 +71,21 @@ router.put("/:gameId", async (req, res) => {
         currentGame.set(req.body)
         await currentUser.save()
         res.redirect(`/users/${currentUser._id}/games/${currentGame._id}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
+
+// DELETE ROUTES
+
+router.delete("/:gameId", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const currentGame = currentUser.gameStats.id(req.params.gameId)
+        currentGame.deleteOne()
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/games`)
     } catch (error) {
         console.log(error)
         res.redirect("/")

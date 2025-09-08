@@ -24,6 +24,19 @@ router.get("/new", (req, res) => {
     res.render("games/new.ejs")
 })
 
+router.get("/:gameId", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        const currentGame = currentUser.gameStats.id(req.params.gameId)
+        res.render("games/show.ejs", { gameStats: currentGame })
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
+
+
+
 // POST ROUTES
 
 router.post("/", async (req, res) => {

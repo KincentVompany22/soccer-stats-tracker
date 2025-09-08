@@ -13,7 +13,9 @@
 
 <ul>
 <% gameStats.forEach((game) => { %>
-    <li> Game <%= game.number %> - <%= game.date %> - <%= game.result %> </li>
+    <li> <a href="/users/<%= user._id %>/games/<%= game._id %>">
+        Game <%= game.number %> - <%= game.date %> - <%= game.result %> 
+    </li> </a>
 <% }) %>
 </ul>
 

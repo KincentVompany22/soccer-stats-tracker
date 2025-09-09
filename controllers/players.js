@@ -50,7 +50,7 @@ router.get("/", async (req, res) => {
             player.totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
             player.averages = { avgGoals, avgAssists, winPercentage}
         })
-        console.log(allPlayers)
+       
         res.render("players/index.ejs", { allPlayers })
 
     } catch (error) {
@@ -93,11 +93,10 @@ router.get("/:playerId", async (req, res) => {
         const winPercentage = (totalWins / totalGames)*100
 
         // Grouping calculations for reference
-        totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
-        averages = { avgGoals, avgAssists, winPercentage}
+        currentPlayer.totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
+        currentPlayer.averages = { avgGoals, avgAssists, winPercentage}
 
-        res.render("players/show.ejs", 
-            { currentPlayer, gameStats, totals, averages })
+        res.render("players/show.ejs", { currentPlayer, gameStats })
 
     
     } catch (error) {

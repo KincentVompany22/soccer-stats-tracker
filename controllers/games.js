@@ -13,10 +13,12 @@ router.get("/", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const gameStats = currentUser.gameStats
+        const mostRecentGame = gameStats[gameStats.length - 1]
 
         const totalGames = gameStats.length
         let totalGoals = 0
         let totalAssists = 0
+        let totalGoalDiff = 0
         let totalWins = 0
         let totalLosses = 0
         let totalDraws = 0
@@ -26,6 +28,7 @@ router.get("/", async (req, res) => {
             gameStats.forEach ((game) => {
                     totalGoals += game.goals
                     totalAssists += game.assists
+                    totalGoalDiff += game.goalDiff
                     if (game.result === "Win") {
                         totalWins += 1
                     }
@@ -38,15 +41,16 @@ router.get("/", async (req, res) => {
                 })
 
         // Calculating averages
-        const avgGoals = totalGoals / totalGames
-        const avgAssists = totalAssists / totalGames
-        const winPercentage = (totalWins / totalGames)*100
+        const avgGoals = (Math.round((totalGoals / totalGames)*10))/10 // (Math.round(num*10))/10 - way to round to nearest decimal place
+        const avgAssists = (Math.round((totalAssists / totalGames)*10))/10
+        const winPercentage = ((Math.round((totalWins / totalGames)*10))/10)*100
+        const avgGoalDiff = (Math.round((totalGoalDiff/ totalGames)*10))/10
 
         // Grouping calculations for reference
-        currentUser.totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
-        currentUser.averages = { avgGoals, avgAssists, winPercentage}
+        currentUser.totals = { totalGames, totalGoals, totalAssists, totalGoalDiff, totalWins, totalLosses, totalDraws}
+        currentUser.averages = { avgGoals, avgAssists, winPercentage, avgGoalDiff }
         
-        res.render("games/index.ejs", { currentUser, gameStats } )
+        res.render("games/index.ejs", { currentUser, gameStats, mostRecentGame } )
 
     } catch (error) {
         console.log(error)
@@ -62,7 +66,7 @@ router.get("/:gameId", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGameStats = currentUser.gameStats.id(req.params.gameId)
-        res.render("games/show.ejs", { currentGameStats })
+        res.render("games/show.ejs", { currentUser, currentGameStats })
     } catch (error) {
         console.log(error)
         res.redirect("/")

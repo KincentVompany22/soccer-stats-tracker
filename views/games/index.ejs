@@ -3,41 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <title> <%= currentUser.username %> Stats </title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
 <%- include('../partials/_navbar.ejs') %>
 
-<h1> <%= currentUser.username %> Stats </h1>
-
-<h1> TOTALS </h1>
-<h2> Games: <%= currentUser.totals.totalGames %> </h2>
-<h2> Goals: <%= currentUser.totals.totalGoals %> </h2>
-<h2> Assists: <%= currentUser.totals.totalAssists %> </h2>
-<h2> Wins: <%= currentUser.totals.totalWins %> </h2>
-<h2> Losses: <%= currentUser.totals.totalLosses %> </h2>
-<h2> Draws: <%= currentUser.totals.totalDraws %> </h2>
-
-<h1> AVERAGES </h1>
-<h2> Goals: <%= currentUser.averages.avgGoals %> </h2>
-<h2> Assists: <%= currentUser.averages.avgAssists %> </h2>
-<h2> Win Rate: <%= currentUser.averages.winPercentage %> % </h2>
-
-<ul>
-<% gameStats.forEach((game) => { %>
-    <li> <a href="/users/<%= user._id %>/games/<%= game._id %>">
-        Game <%= game.number %> - <%= game.date %> - <%= game.result %> 
-    </li> </a>
-<% }) %>
-</ul>
-
-
-
-
-
-
+<h1> My Stats </h1>
+  
+<h2> <%= currentUser.firstName %> <%= currentUser.lastInitial %> (<%= currentUser.username %>) </h2>
 <a href="/users/<%= user._id %>/games/new">Add New Game Stats</a>
+
+<h3> Totals </h3>
+<ul> <strong> Games Played: </strong> <%= currentUser.totals.totalGames %> </ul>
+<ul> <strong> Wins: </strong> <%= currentUser.totals.totalWins %> </ul>
+<ul> <strong> Draws: </strong> <%= currentUser.totals.totalDraws %> </ul>
+<ul> <strong> Losses: </strong> <%= currentUser.totals.totalLosses %> </ul>
+<ul> <strong> Goals: </strong> <%= currentUser.totals.totalGoals %> </ul>
+<ul> <strong> Assists: </strong> <%= currentUser.totals.totalAssists %> </ul>
+
+<h3> Averages </h3>
+<ul> <strong> Win Rate: </strong> <%= currentUser.averages.winPercentage %> %</ul>
+<ul> <strong> Goals per Game: </strong> <%= currentUser.averages.avgGoals %> </ul>
+<ul> <strong> Assists per Game: </strong> <%= currentUser.averages.avgAssists %> </ul>
+<ul> <strong> Goal Difference: </strong> <%= currentUser.averages.avgGoalDiff %> </ul>
+
+<h3> Most Recent Game </h3>
+<ul> <strong> Game #: </strong> <%= mostRecentGame.number %> </ul>
+<ul> <strong> Date: </strong> <%= mostRecentGame.date %> </ul>
+<ul> <strong> Result: </strong> <%= mostRecentGame.result %> </ul>
+<ul> <strong> GD: </strong> <%= mostRecentGame.goalDiff %> </ul>
+<ul> <strong> Goals: </strong> <%= mostRecentGame.goals %> </ul>
+<ul> <strong> Assists: </strong> <%= mostRecentGame.assists %> </ul>
+
+
+<h3> All Games </h3>
+<% gameStats.forEach((game) => { %>
+    <ul> <a href="/users/<%= user._id %>/games/<%= game._id %>">
+        Game <%= game.number %> - <%= game.date %> - <%= game.result %> 
+    </ul> </a>
+<% }) %>
+
+
+
+
 
 
 </body>

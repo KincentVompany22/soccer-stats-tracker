@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <title> <%= currentUser.username %> Game <%= currentGameStats.number %> Stats </title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
 <%- include('../partials/_navbar.ejs') %>
 
-<h1> GAME <%= currentGameStats.number %> Stats </h1>
+<h1> <%= currentUser.firstName %> <%= currentUser.lastInitial %> (<%= currentUser.username %>) </h1>
+
+<h2> Game <%= currentGameStats.number %> Stats </h2>
 
 <ul>
     <li> <strong>Game #:</strong> <%= currentGameStats.number %> </li>

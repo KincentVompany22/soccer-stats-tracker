@@ -1,3 +1,51 @@
 body {
-    background-color: aquamarine;
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+nav {
+    background-color: orange;
+    padding: 20px;
+}
+
+.player-stats {
+    display: flex;
+    align-items: left;
+    gap: 100px;
+    margin-left: 40px;
+}
+
+.totals, .averages, .recent-game {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 250px;
+    min-height: 250px;
+    border: solid 2px black;
+    padding: 2px;
+}
+
+.stat-block ul {
+    list-style: none;
+    margin: 0px;
+    padding: 20px;;
+    font-size: 16px;
+}
+
+.all-games h3 {
+    margin: 40px 0 0 40px;
+}
+
+.all-games ul {
+    border: solid 2px black;
+    margin-left: 40px;
+    padding: 5px;
+    max-width: 960px;
 }

@@ -11,19 +11,24 @@
 <%- include('../partials/_navbar.ejs') %>
 
 <h1> Community Stats </h1>
-<h3> See Everyone's Stats! </h3>
 
-
+<div class = "community-stats">
+  <div class = "player-stats">
     <% allPlayers.forEach((player) => { %>
-
-      <h3> <a href="/players/<%= player._id %>"> <%= player.firstName %> <%= player.lastInitial %> (<%= player.username %>) </a> </h3>
-      
-      <ul> <strong> Games Played: </strong> <%= player.totals.totalGames %> </ul>
-      <ul> <strong> Win Rate: </strong> <%= player.averages.winPercentage %> % </ul>
-      <ul> <strong>Total Goals: </strong> <%= player.totals.totalGoals %> </ul>
-      <ul> <strong> Total Assists: </strong> <%= player.totals.totalAssists %> </ul>
-
+      <div class = "stat-block">
+        <h3> <a href="/players/<%= player._id %>"> <%= player.firstName %> <%= player.lastInitial %> (<%= player.username %>) </a> </h3>
+        <div class = "stats">
+          <ul>
+            <li> <strong> Games Played: </strong> <%= player.totals.totalGames %> </li>
+            <li> <strong> Win Rate: </strong> <%= player.averages.winPercentage %> % </li>
+            <li> <strong>Total Goals: </strong> <%= player.totals.totalGoals %> </li>
+            <li> <strong> Total Assists: </strong> <%= player.totals.totalAssists %> </li>
+          </ul>
+        </div>
+      </div>
     <% }) %>
+  </div>
+</div>
 
 
 

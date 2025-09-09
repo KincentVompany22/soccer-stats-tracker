@@ -7,7 +7,7 @@ h1 {
 }
 
 h2 {
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 nav {
@@ -22,21 +22,28 @@ nav {
     margin-left: 40px;
 }
 
-.totals, .averages, .recent-game {
+.stats  {
     display: flex;
     flex-direction: column;
     align-items: left;
+    justify-content: center;
     width: 250px;
-    min-height: 250px;
+    min-height: 200px;
     border: solid 2px black;
     padding: 2px;
+}
+
+.stat-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .stat-block ul {
     list-style: none;
     margin: 0px;
     padding: 20px;;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .all-games h3 {
@@ -48,4 +55,13 @@ nav {
     margin-left: 40px;
     padding: 5px;
     max-width: 960px;
+}
+
+.community-stats .player-stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
 }

@@ -30,7 +30,7 @@
 <ul> <strong> Goal Difference: </strong> <%= currentUser.averages.avgGoalDiff %> </ul>
 
 <h3> Most Recent Game </h3>
-<ul> <strong> Game #: </strong> <%= mostRecentGame.number %> </ul>
+<ul> <strong> Game #: </strong> <%= mostRecentGame.number > 0 ? mostRecentGame.number : "N/A"  %> </ul>
 <ul> <strong> Date: </strong> <%= mostRecentGame.date %> </ul>
 <ul> <strong> Result: </strong> <%= mostRecentGame.result %> </ul>
 <ul> <strong> GD: </strong> <%= mostRecentGame.goalDiff %> </ul>

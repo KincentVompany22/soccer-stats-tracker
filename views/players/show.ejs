@@ -17,7 +17,7 @@
 <div class = "player-stats">
   <div class = "stat-block">
     <h3> Totals </h3>
-    <div class = "totals">
+    <div class = "stats">
       <ul>
         <li> <strong> Games Played: </strong> <%= currentPlayer.totals.totalGames %> </li>
         <li> <strong> Wins: </strong> <%= currentPlayer.totals.totalWins %> </li>
@@ -31,7 +31,7 @@
 
   <div class = "stat-block">
     <h3> Averages </h3>
-    <div class = "averages">
+    <div class = "stats">
       <ul>
         <li> <strong> Win Rate: </strong> <%= currentPlayer.averages.winPercentage %> %</li>
         <li> <strong> Goals per Game: </strong> <%= currentPlayer.averages.avgGoals %> </li>
@@ -43,10 +43,10 @@
 
   <div class = "stat-block">
     <h3> Most Recent Game </h3>
-    <div class = "recent-game">
+    <div class = "stats">
       <ul>
         <li> <strong> Game #: </strong> <%= mostRecentGame.number %> </li>
-        <li> <strong> Date: </strong> <%= mostRecentGame.date %> </li>
+        <li> <strong> Date: </strong> <%= new Date (mostRecentGame.date).toDateString() %> </li>
         <li> <strong> Result: </strong> <%= mostRecentGame.result %> </li>
         <li> <strong> GD: </strong> <%= mostRecentGame.goalDiff %> </li>
         <li> <strong> Goals: </strong> <%= mostRecentGame.goals %> </li>
@@ -60,7 +60,7 @@
   <h3> All Games </h3>
   <% gameStats.forEach((game) => { %>
       <ul> <a href="/players/<%= currentPlayer._id %>/games/<%= game._id %>">
-          Game <%= game.number %> - <%= game.date %> - <%= game.result %> 
+          Game <%= game.number %> - <%= new Date (game.date).toDateString() %> - <%= game.result %> 
       </ul> </a>
   <% }) %>
 </div>

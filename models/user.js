@@ -23,7 +23,7 @@ const gameStatsSchema = new mongoose.Schema ({
   },
   assists: {
     type: Number,
-  }
+  },
 })
 
 const userSchema = new mongoose.Schema({

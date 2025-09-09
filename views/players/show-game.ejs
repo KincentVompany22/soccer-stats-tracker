@@ -12,18 +12,25 @@
 
 <h1> <%= currentPlayer.firstName %> <%= currentPlayer.lastInitial %> (<%= currentPlayer.username %>) </h1>
 
-<h2> Game <%= currentGameStats.number %> Stats </h2>
 
-<ul>
-    <li> <strong>Game #:</strong> <%= currentGameStats.number %> </li>
-    <li> <strong>Date:</strong> <%= currentGameStats.date %> </li>
-    <li> <strong>Location:</strong> <%= currentGameStats.location %> </li>
-    <li> <strong>Result:</strong> <%= currentGameStats.result %> </li>
-    <li> <strong>GD:</strong> <%= currentGameStats.goalDiff %> </li>
-    <li> <strong>Goals:</strong> <%= currentGameStats.goals %> </li>
-    <li> <strong>Assists:</strong> <%= currentGameStats.assists %> </li>
-</ul>
+<div class = "player-stats">
+  <div class = "stat-block">
+    <h3> Game <%= currentGameStats.number %> Stats </h3>
+    <div class = "stats">
+      <ul>
+        <li> <strong>Game #:</strong> <%= currentGameStats.number %> </li>
+        <li> <strong>Date:</strong> <%= new Date (currentGameStats.date).toDateString() %> </li>
+        <li> <strong>Location:</strong> <%= currentGameStats.location %> </li>
+        <li> <strong>Result:</strong> <%= currentGameStats.result %> </li>
+        <li> <strong>GD:</strong> <%= currentGameStats.goalDiff %> </li>
+        <li> <strong>Goals:</strong> <%= currentGameStats.goals %> </li>
+        <li> <strong>Assists:</strong> <%= currentGameStats.assists %> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
+<a href="/players/<%= currentPlayer._id %>"> Back to Player Stats </a>
 
 </body>
 </html>

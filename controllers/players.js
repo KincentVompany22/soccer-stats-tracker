@@ -67,6 +67,7 @@ router.get("/:playerId", async (req, res) => {
         const currentPlayer = await User.findById(req.params.playerId)
         const gameStats = currentPlayer.gameStats
         const mostRecentGame = gameStats[gameStats.length - 1]
+        
 
         const totalGames = gameStats.length
         let totalGoals = 0

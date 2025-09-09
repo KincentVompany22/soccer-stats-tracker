@@ -24,7 +24,13 @@
 <h2> Assists: <%= averages.avgAssists %> </h2>
 <h2> Win Rate: <%= averages.winPercentage %> % </h2>
 
-
+<ul>
+<% gameStats.forEach((game) => { %>
+    <li> <a href="/players/<%= currentPlayer._id %>/games/<%= game._id %>">
+        Game <%= game.number %> - <%= game.date %> - <%= game.result %> 
+    </li> </a>
+<% }) %>
+</ul>
 
 
 

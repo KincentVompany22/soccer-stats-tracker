@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Players Page</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
@@ -11,13 +12,16 @@
 
 <h1> THIS IS THE COMMUNITY PAGE </h1>
 
-<ul>
+
 
     <% allPlayers.forEach((player) => { %>
-      <li> <a href="/players/<%= player._id %>"> <%= player.username %> </a> </li>
+      <h3> <a href="/players/<%= player._id %>"> <%= player.username %> </a> </h3>
+      <ul> <%= player.totals.totalGames %> </ul>
+      <ul> <%= player.totals.totalGoals %> </ul>
     <% }) %>
 
-</ul>
+
+
 
 
 

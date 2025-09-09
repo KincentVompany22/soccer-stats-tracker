@@ -14,50 +14,37 @@ router.get("/", async (req, res) => {
         const currentUser = await User.findById(req.session.user._id)
         const gameStats = currentUser.gameStats
 
-        // CALCS
-        // Totals
         const totalGames = gameStats.length
-
         let totalGoals = 0
-            gameStats.forEach((game) => {
-                totalGoals += game.goals
-            })
-
         let totalAssists = 0
-        gameStats.forEach((game) => {
-            totalAssists += game.assists
-        })
-
         let totalWins = 0
-        gameStats.forEach((game) => {
-            if (game.result === "Win") {
-                return totalWins += 1
-            }
-        })
-
         let totalLosses = 0
-        gameStats.forEach((game) => {
-            if (game.result === "Loss") {
-                return totalLosses += 1
-            }
-        })
-
         let totalDraws = 0
-        gameStats.forEach((game) => {
-            if (game.result === "Draw") {
-                return totalDraws += 1
-            }
-        })
 
-        // Averages
+        // Looping through the current player's games
+            // Calculating totals
+            gameStats.forEach ((game) => {
+                    totalGoals += game.goals
+                    totalAssists += game.assists
+                    if (game.result === "Win") {
+                        totalWins += 1
+                    }
+                    if (game.result === "Loss") {
+                        totalLosses += 1
+                    }
+                    if (game.result === "Draw") {
+                        totalDraws += 1
+                    }
+                })
+
+        // Calculating averages
         const avgGoals = totalGoals / totalGames
         const avgAssists = totalAssists / totalGames
         const winPercentage = (totalWins / totalGames)*100
 
-        // Grouping
-        const totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
-        const averages = { avgGoals, avgAssists, winPercentage}
-
+        // Grouping calculations for reference
+        totals = { totalGames, totalGoals, totalAssists, totalWins, totalLosses, totalDraws}
+        averages = { avgGoals, avgAssists, winPercentage}
         res.render("games/index.ejs", 
             { currentUser, gameStats, totals, averages } )
 
@@ -138,8 +125,6 @@ router.delete("/:gameId", async (req, res) => {
         res.redirect("/")
     }
 })
-
-
 
 
 

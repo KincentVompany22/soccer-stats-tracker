@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+</head>
+<body>
+
+<%- include('../partials/_navbar.ejs') %>
+
+<h1> GAME <%= currentGameStats.number %> Stats </h1>
+
+<ul>
+    <li> <strong>Game #:</strong> <%= currentGameStats.number %> </li>
+    <li> <strong>Date:</strong> <%= currentGameStats.date %> </li>
+    <li> <strong>Location:</strong> <%= currentGameStats.location %> </li>
+    <li> <strong>Result:</strong> <%= currentGameStats.result %> </li>
+    <li> <strong>GD:</strong> <%= currentGameStats.goalDiff %> </li>
+    <li> <strong>Goals:</strong> <%= currentGameStats.goals %> </li>
+    <li> <strong>Assists:</strong> <%= currentGameStats.assists %> </li>
+</ul>
+
+
+</body>
+</html>

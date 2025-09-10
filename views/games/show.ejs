@@ -21,7 +21,7 @@
     <div class = "stats">
       <ul>
           <li> <strong>Game #:</strong> <%= currentGameStats.number %> </li>
-          <li> <strong>Date:</strong> <%= currentGameStats.date %> </li>
+          <li> <strong>Date:</strong> <%= new Date(currentGameStats.date).toDateString() %> </li>
           <li> <strong>Location:</strong> <%= currentGameStats.location %> </li>
           <li> <strong>Result:</strong> <%= currentGameStats.result %> </li>
           <li> <strong>GD:</strong> <%= currentGameStats.goalDiff %> </li>

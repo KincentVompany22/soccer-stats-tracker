@@ -66,7 +66,7 @@ router.get("/:gameId", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGameStats = currentUser.gameStats.id(req.params.gameId)
-        res.render("games/show.ejs", { currentUser, currentGameStats })
+        res.render("games/show.ejs", { currentUser, currentGameStats, })
     } catch (error) {
         console.log(error)
         res.redirect("/")
@@ -77,7 +77,7 @@ router.get("/:gameId/edit", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGame = currentUser.gameStats.id(req.params.gameId)
-        res.render("games/edit.ejs", { gameStats: currentGame })
+        res.render("games/edit.ejs", { gameStats: currentGame,})
     } catch (error) {
         console.log(error)
         res.redirect("/")

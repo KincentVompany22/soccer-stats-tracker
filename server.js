@@ -7,6 +7,8 @@ const methodOverride = require("method-override")
 const morgan = require("morgan")
 const session = require("express-session")
 
+const User = require('./models/user.js')
+
 const authController = require("./controllers/auth.js")
 const gamesController = require("./controllers/games.js")
 const playersController = require("./controllers/players.js")
@@ -38,7 +40,9 @@ app.use(
 )
 
 app.get("/", (req, res) => {
-  res.redirect("/players")
+  res.render("index.ejs", {
+    user: req.session.user,
+  })
 })
 
 

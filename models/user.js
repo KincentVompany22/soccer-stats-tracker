@@ -3,9 +3,11 @@ const mongoose = require('mongoose')
 const gameStatsSchema = new mongoose.Schema ({
   number: {
     type: Number,
+    required: true,
   },
   date: {
     type: Date,
+    required: true,
   }, 
   location: {
     type: String,
@@ -14,6 +16,7 @@ const gameStatsSchema = new mongoose.Schema ({
   result: {
     type: String,
     enum: ["Win", "Loss", "Draw"],
+    required: true,
   },
   goalDiff: {
     type: Number,

@@ -1,14 +1,24 @@
 <nav>
 
   <div class = "nav-left">
+    <a href="/"> HOME </a>
     <a href="/players"> ALL PLAYERS</a>
     <% if(user) { %>
       <a href="/users/<%=user._id%>/games">MY STATS</a>
+      <a href="/users/<%= user._id %>/games/new"> ADD GAME </a>
     <% } %>
   </div>
   
+  <div class = "nav-center">
+    <h1> PitchPulse </h1>
+  </div>
+
   <div class = "nav-right">
     <% if(user) { %>
+      <a href="/"> 
+        <% const username = user.username %>
+        <%= username.toUpperCase() %>'S PROFILE
+      </a>
       <a href="/auth/sign-out">SIGN OUT</a>
     <% } else { %>
       <a href="/auth/sign-in">SIGN IN</a>

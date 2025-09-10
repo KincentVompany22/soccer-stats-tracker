@@ -10,7 +10,7 @@
 
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1>Edit Game</h1>
+    <h1> Edit Game Stats </h1>
 
     <form action="/users/<%= user._id %>/games/<%= gameStats._id %>?_method=PUT" method = "POST">
         
@@ -18,7 +18,9 @@
         <input type="number" name="number" id="number" value="<%= gameStats.number %>" />
 
         <label for="date">Date:</label>
-        <input type="date" name="date" id="date" value="<%= gameStats.date %>" />
+        <input type="date" name="date" id="date" value="<%= gameStats.date.toISOString().slice(0,10) %>" />
+        <!-- date value would not populate in edit form, so had to return value in format form was in (YYYY/MM/DD) 
+         toISOString converts value to date time string format and slice (0,10) returns first 10 characters, which is what I need -->
 
         <label for="location">Location:</label>
         <select id="location" name="location">
@@ -44,12 +46,12 @@
         <label for="assists">Assists:</label>
         <input type="assists" name="assists" id="assists" value="<%= gameStats.assists %>" />
 
-        <button type="submit">Edit Game Stats</button>
+        <button type="submit">Edit Stats</button>
 
     </form>
 
     <form action="/users/<%= user._id %>/games/<%= gameStats._id %>?_method=DELETE" method = "POST">
-        <button type="submit">Delete Game</button>
+        <button type="submit">Delete</button>
     </form>
 
     

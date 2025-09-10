@@ -7,7 +7,13 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <h1>Create a new account!</h1>
+
+  <%- include('../partials/_navbar.ejs') %>
+
+  <h1>CREATE ACCOUNT</h1>
+
+  <p> Already registered? <a href="/auth/sign-in"> Sign in </a> </p>
+
   <form action="/auth/sign-up" method="POST">
 
     <label for="firstName">First Name:</label>
@@ -25,7 +31,7 @@
     <label for="confirmPassword">Confirm Password:</label>
     <input type="password" name="confirmPassword" id="confirmPassword" required />
     
-    <button type="submit">Sign up</button>
+    <button type="submit">CREATE ACCOUNT</button>
 
   </form>
 </body>

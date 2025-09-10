@@ -10,7 +10,7 @@
 
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1>Add Game</h1>
+    <h1>Add Stats</h1>
 
     <form action="/users/<%= user._id %>/games" method = "POST">
         
@@ -43,7 +43,7 @@
         <label for="assists">Assists:</label>
         <input type="assists" name="assists" id="assists" />
 
-        <button type="submit">Add Game Stats</button>
+        <button type="submit">Add Stats</button>
 
     </form>
 

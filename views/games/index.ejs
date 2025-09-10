@@ -13,42 +13,70 @@
 <h1> My Stats </h1>
   
 <h2> <%= currentUser.firstName %> <%= currentUser.lastInitial %> (<%= currentUser.username %>) </h2>
-<a href="/users/<%= user._id %>/games/new">Add New Game Stats</a>
+<h4> <a href="/users/<%= user._id %>/games/new">Add New Game Stats</a> </h4>
 
-<h3> Totals </h3>
-<ul> <strong> Games Played: </strong> <%= currentUser.totals.totalGames %> </ul>
-<ul> <strong> Wins: </strong> <%= currentUser.totals.totalWins %> </ul>
-<ul> <strong> Draws: </strong> <%= currentUser.totals.totalDraws %> </ul>
-<ul> <strong> Losses: </strong> <%= currentUser.totals.totalLosses %> </ul>
-<ul> <strong> Goals: </strong> <%= currentUser.totals.totalGoals %> </ul>
-<ul> <strong> Assists: </strong> <%= currentUser.totals.totalAssists %> </ul>
+<div class = "player-stats">
+  
+  <div class = "stat-block">
+    <h3> Totals </h3>
+    <div class = "stats">
+      <ul>
+        <li> <strong> Games Played: </strong> <%= currentUser.totals.totalGames %> </li>
+        <li> <strong> Wins: </strong> <%= currentUser.totals.totalWins %> </li>
+        <li> <strong> Draws: </strong> <%= currentUser.totals.totalDraws %> </li>
+        <li> <strong> Losses: </strong> <%= currentUser.totals.totalLosses %> </li>
+        <li> <strong> Goals: </strong> <%= currentUser.totals.totalGoals %> </li>
+        <li> <strong> Assists: </strong> <%= currentUser.totals.totalAssists %> </li>
+      </ul>
+    </div>
+  </div>
 
-<h3> Averages </h3>
-<ul> <strong> Win Rate: </strong> <%= currentUser.averages.winPercentage %> %</ul>
-<ul> <strong> Goals per Game: </strong> <%= currentUser.averages.avgGoals %> </ul>
-<ul> <strong> Assists per Game: </strong> <%= currentUser.averages.avgAssists %> </ul>
-<ul> <strong> Goal Difference: </strong> <%= currentUser.averages.avgGoalDiff %> </ul>
+  <div class = "stat-block">
+    <h3> Averages </h3>
+    <div class = "stats">
+      <ul>
+        <li> <strong> Win Rate: </strong> <%= currentUser.averages.winPercentage %> %</li>
+        <li> <strong> Goals per Game: </strong> <%= currentUser.averages.avgGoals %> </li>
+        <li> <strong> Assists per Game: </strong> <%= currentUser.averages.avgAssists %> </li>
+        <li> <strong> Goal Difference: </strong> <%= currentUser.averages.avgGoalDiff %> </li>
+      </ul>
+    </div>
+  </div>
 
-<h3> Most Recent Game </h3>
-<ul> <strong> Game #: </strong> <%= mostRecentGame.number > 0 ? mostRecentGame.number : "N/A"  %> </ul>
-<ul> <strong> Date: </strong> <%= mostRecentGame.date %> </ul>
-<ul> <strong> Result: </strong> <%= mostRecentGame.result %> </ul>
-<ul> <strong> GD: </strong> <%= mostRecentGame.goalDiff %> </ul>
-<ul> <strong> Goals: </strong> <%= mostRecentGame.goals %> </ul>
-<ul> <strong> Assists: </strong> <%= mostRecentGame.assists %> </ul>
+  <div class = "stat-block">
+    <h3> Most Recent Game </h3>
+    <div class = "stats">
+      <% if (mostRecentGame) { %>
+        <ul>
+          <li> <strong> Game #: </strong> <%= mostRecentGame.number %> </li>
+          <li> <strong> Date: </strong> <%= new Date (mostRecentGame.date).toDateString() %> </li>
+          <li> <strong> Result: </strong> <%= mostRecentGame.result %> </li>
+          <li> <strong> GD: </strong> <%= mostRecentGame.goalDiff %> </li>
+          <li> <strong> Goals: </strong> <%= mostRecentGame.goals %> </li>
+          <li> <strong> Assists: </strong> <%= mostRecentGame.assists %> </li>
+        </ul>
+      <% } else { %>
+        <ul> 
+          <li> <a href="/users/<%= user._id %>/games/new"> <strong> Click to add your first game! </strong> </a> </li>
+        </ul>    
+      <% } %>
+    </div>
+  </div>
 
+</div>
 
-<h3> All Games </h3>
-<% gameStats.forEach((game) => { %>
-    <ul> <a href="/users/<%= user._id %>/games/<%= game._id %>">
-        Game <%= game.number %> - <%= game.date %> - <%= game.result %> 
-    </ul> </a>
-<% }) %>
-
-
-
-
-
+<div class = "all-games">
+  <% if (mostRecentGame) { %>
+    <h3> All Games </h3>
+    <% gameStats.forEach((game) => { %>
+        <ul> <a href="/users/<%= user._id %>/games/<%= game._id %>">
+            Game <%= game.number %> - <%= new Date (game.date).toDateString() %> - <%= game.result %> 
+        </ul> </a>
+    <% }) %>
+  <% } else { %>
+      <h3> No Games Added Yet! </h3>
+    <% } %>
+</div>
 
 </body>
 </html>

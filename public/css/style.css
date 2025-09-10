@@ -6,13 +6,24 @@ h1 {
     text-align: center;
 }
 
-h2 {
+h2, h4 {
     margin-left: 40px;
 }
 
 nav {
     background-color: orange;
     padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+nav .nav-right {
+    margin-left: auto;
+}
+
+nav .nav-left a,
+nav .nav-right a {
+    margin: 10px;
 }
 
 .player-stats {
@@ -62,6 +73,5 @@ nav {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    
-
 }
+

@@ -10,10 +10,14 @@
 
 <%- include('../partials/_navbar.ejs') %>
 
-<h1> <%= currentPlayer.firstName %> <%= currentPlayer.lastInitial %> (<%= currentPlayer.username %>) </h1>
+<h1> GAME STATS </h1>
 
+<h2> <%= currentPlayer.firstName %> <%= currentPlayer.lastInitial %> (<%= currentPlayer.username %>) </h2>
+
+<h4> <a href="/players/<%= currentPlayer._id %>"> Back to Player Stats </a> </h4>
 
 <div class = "player-stats">
+
   <div class = "stat-block">
     <h3> Game <%= currentGameStats.number %> Stats </h3>
     <div class = "stats">
@@ -28,9 +32,8 @@
       </ul>
     </div>
   </div>
-</div>
 
-<a href="/players/<%= currentPlayer._id %>"> Back to Player Stats </a>
+</div>
 
 </body>
 </html>

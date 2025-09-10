@@ -66,7 +66,7 @@ router.get("/:playerId", async (req, res) => {
     try {
         const currentPlayer = await User.findById(req.params.playerId)
         const gameStats = currentPlayer.gameStats
-        const mostRecentGame = gameStats[gameStats.length - 1]
+        const mostRecentGame = gameStats.length > 0 ? gameStats[gameStats.length - 1] : null
         
 
         const totalGames = gameStats.length

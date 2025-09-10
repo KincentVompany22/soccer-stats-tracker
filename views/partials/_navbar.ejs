@@ -1,12 +1,19 @@
 <nav>
-  <a href="/">Home</a>
-  <% if(user) { %>
-  <a href="/players"> Players</a>
-  <a href="/users/<%=user._id%>/games">My Games</a>
-  <a href="/auth/sign-out">Sign Out</a>
-  <% } else { %>
-  <a href="/players">Players</a>
-  <a href="/auth/sign-in">Sign In</a>
-  <a href="/auth/sign-up">Sign Up</a>
-  <% } %>
+
+  <div class = "nav-left">
+    <a href="/players"> ALL PLAYERS</a>
+    <% if(user) { %>
+      <a href="/users/<%=user._id%>/games">MY STATS</a>
+    <% } %>
+  </div>
+  
+  <div class = "nav-right">
+    <% if(user) { %>
+      <a href="/auth/sign-out">SIGN OUT</a>
+    <% } else { %>
+      <a href="/auth/sign-in">SIGN IN</a>
+      <a href="/auth/sign-up">CREATE ACCOUNT</a>
+    <% } %>
+  </div>
+
 </nav>

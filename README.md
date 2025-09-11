@@ -34,3 +34,6 @@ Git, MongoDB, Node.js, Javascript, HTML, CSS, npm, Express, Mongoose, EJS, bcryp
 **Group-Based Profiles**:
 - Enable the creation of private leagues or groups, each with its own player roster.
 - Protect group membership with invitation codes or passwords, so communities can track stats collectively.
+
+**Style for Mobile**:
+- Apply mobile first styling principles as current styling is geared towards a desktop view.

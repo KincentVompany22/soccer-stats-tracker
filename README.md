@@ -22,4 +22,15 @@ Git, MongoDB, Node.js, Javascript, HTML, CSS, npm, Express, Mongoose, EJS, bcryp
 
 ## Next Steps & Planned Future Enhancements
 
-- **ADD**: Add 
+**Smart Form Behavior**: Restrict certain form inputs depending on previous inputs.
+- Automatically set Goal Difference to 0 when a match is marked as a Draw.
+- Enforce Goal Difference to be a positive number for Wins and a negative number for Losses.
+- Dynamically suggest the next Game Number based on existing entries.
+
+**Teammate Integration**:
+- Allow users to tag teammates when logging match stats.
+- Limit teammate selection to registered users, creating shared history and accountability.
+
+**Group-Based Profiles**:
+- Enable the creation of private leagues or groups, each with its own player roster.
+- Protect group membership with invitation codes or passwords, so communities can track stats collectively.

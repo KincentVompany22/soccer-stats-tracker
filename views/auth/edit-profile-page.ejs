@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <%- include('../partials/_navbar.ejs') %>
+
+  <h1>EDIT ACCOUNT</h1>
+
+  <form action="/users/<%= user._id %>/edit?_method=PUT" method="POST">
+
+    <label for="firstName">First Name:</label>
+    <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>" required />
+
+    <label for="lastInitial">Last Initial:</label>
+    <input type="text" name="lastInitial" id="lastInitial" value="<%= user.lastInitial %>"required />
+
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" value="<%= user.username %>" required />
+    
+    <button type="submit">Edit Account</button>
+
+  </form>
+
+  <form action="/users/<%= user._id %>?_method=DELETE" method = "POST">
+        <button type="submit">Delete Account</button>
+    </form>
+
+  </body>
+</html>

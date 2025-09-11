@@ -15,7 +15,7 @@
 
   <div class = "nav-right">
     <% if(user) { %>
-      <a href="/"> 
+      <a href="/users/<%= user._id %>/edit"> 
         <% const username = user.username %>
         <%= username.toUpperCase() %>'S PROFILE
       </a>

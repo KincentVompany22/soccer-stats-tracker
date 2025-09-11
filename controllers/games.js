@@ -4,12 +4,13 @@ const router = express.Router()
 const User = require('../models/user.js')
 
 /* ------ ROUTER LOGIC ------ */
-// "/users/:userId/games" is the prefix for all routes
+// "/users/:userId" is the prefix for all routes
     // established in server.js
 
 // GET ROUTES
 
-router.get("/", async (req, res) => {
+//// All Games Page
+router.get("/games", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const gameStats = currentUser.gameStats
@@ -58,11 +59,14 @@ router.get("/", async (req, res) => {
     }
 })
 
-router.get("/new", (req, res) => {
+//// New Game Form
+router.get("/games/new", (req, res) => {
     res.render("games/new.ejs")
 })
 
-router.get("/:gameId", async (req, res) => {
+
+//// Single Game Page
+router.get("/games/:gameId", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGameStats = currentUser.gameStats.id(req.params.gameId)
@@ -73,7 +77,8 @@ router.get("/:gameId", async (req, res) => {
     }
 })
 
-router.get("/:gameId/edit", async (req, res) => {
+//// Edit Game Form
+router.get("/games/:gameId/edit", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGame = currentUser.gameStats.id(req.params.gameId)
@@ -84,12 +89,23 @@ router.get("/:gameId/edit", async (req, res) => {
     }
 } )
 
-router.get("")
+//// Edit Profile Page Form
+router.get("/edit", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        res.render("auth/edit-profile-page.ejs", { currentUser })
+        // console.log(currentUser)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
 
 
 // POST ROUTES
 
-router.post("/", async (req, res) => {
+//// Add Game Form Submission
+router.post("/games", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         currentUser.gameStats.push(req.body)
@@ -104,7 +120,8 @@ router.post("/", async (req, res) => {
 
 // PUT ROUTES
 
-router.put("/:gameId", async (req, res) => {
+//// Edit Game Form Submission
+router.put("/games/:gameId", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGame = currentUser.gameStats.id(req.params.gameId)
@@ -118,9 +135,26 @@ router.put("/:gameId", async (req, res) => {
     }
 })
 
+//// Edit Profile Page Form Submission
+router.put("/edit", async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        currentUser.set(req.body)
+        // console.log(req.body)
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/games`)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
+
+
+
 // DELETE ROUTES
 
-router.delete("/:gameId", async (req, res) => {
+//// Delete game
+router.delete("/games/:gameId", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         const currentGame = currentUser.gameStats.id(req.params.gameId)
@@ -133,6 +167,14 @@ router.delete("/:gameId", async (req, res) => {
     }
 })
 
-
+//// Delete account
+router.delete("/", async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.session.user._id)
+    } catch (error) {
+        console.log(error)
+        res.redirect("/")
+    }
+})
 
 module.exports = router

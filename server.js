@@ -17,10 +17,9 @@ const playersController = require("./controllers/players.js")
 const isSignedIn = require("./middleware/is-signed-in.js")
 const passUserToView = require("./middleware/pass-user-to-view.js")
 
-
-
-
+// Assigning Port
 const port = process.env.PORT ? process.env.PORT : "3000"
+
 
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -51,7 +50,7 @@ app.use(passUserToView)
 app.use("/auth", authController)
 app.use("/players",playersController)
 app.use(isSignedIn)
-app.use("/users/:userId/games", gamesController)
+app.use("/users/:userId", gamesController)
 
 
 

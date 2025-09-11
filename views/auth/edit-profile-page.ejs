@@ -15,13 +15,13 @@
   <form action="/users/<%= user._id %>/edit?_method=PUT" method="POST">
 
     <label for="firstName">First Name:</label>
-    <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>" required />
+    <input type="text" name="firstName" id="firstName" value="<%= currentUser.firstName %>" required />
 
     <label for="lastInitial">Last Initial:</label>
-    <input type="text" name="lastInitial" id="lastInitial" value="<%= user.lastInitial %>"required />
+    <input type="text" name="lastInitial" id="lastInitial" value="<%= currentUser.lastInitial %>" required />
 
     <label for="username">Username:</label>
-    <input type="text" name="username" id="username" value="<%= user.username %>" required />
+    <input type="text" name="username" id="username" value="<%= currentUser.username %>" required />
     
     <button type="submit">Edit Account</button>
 

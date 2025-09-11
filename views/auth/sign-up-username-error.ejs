@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In Issue</title>
+  <title>Sign Up Issue</title>
   <link rel="stylesheet" href="/css/style.css" />
 
 </head>
@@ -11,10 +11,16 @@
 
 <%- include('../partials/_navbar.ejs') %>
 
-<h1> Sign In Issue </h1>
-<p>There was an issue signing in! Please make sure you type in your username and/or password correctly.</p>
+<h1> Sign Up Issue </h1>
 
-<p> <a href="/auth/sign-in"> Try again! </a> </p>
+<% if (userInDatabase) { %>
+<p>There was an issue signing up! The username you chose is taken already.</p>
+<% } else if (passwordMismatch) { %>
+<p>There was an issue signing up! Make sure you match your passwords.</p>
+<% } %>
+
+
+<p> <a href="/auth/sign-up"> Try again! </a> </p>
 
 <div class="logo">
 <img src="../images/pitch-pulse-logo.png" alt="PitchPulse logo">

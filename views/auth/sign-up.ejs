@@ -10,6 +10,16 @@
 
   <%- include('../partials/_navbar.ejs') %>
 
+
+    <% if (userInDatabase) { %>
+    <h1> Sign Up Issue </h1>
+    <p>There was an issue signing up! The username you chose is taken already.</p>
+    <% } else if (passwordMismatch) { %>
+    <h1> Sign Up Issue </h1>
+    <p>There was an issue signing up! Make sure you match your passwords.</p>
+    <% } %>
+
+
   <h1>CREATE ACCOUNT</h1>
 
   <p> Already registered? <a href="/auth/sign-in"> Sign in </a> </p>

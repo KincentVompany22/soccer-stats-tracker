@@ -10,12 +10,12 @@ const gameStatsSchema = new mongoose.Schema ({
     required: true,
     // Solves date issue with form date being day later than displayed date
     // Still need to convert date in view to string toDateString() to format properly
-    set: v => {
-      if (typeof v === 'string') {
-        const [y,m,d] = v.split("-").map(Number)
+    set: date => {
+      if (typeof date === 'string') {
+        const [y,m,d] = date.split("-").map(Number)
         return new Date(y, m - 1, d)
       }
-      return v
+      return date
     }
   }, 
   location: {

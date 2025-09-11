@@ -68,7 +68,7 @@
 <div class = "all-games">
   <% if (mostRecentGame) { %>
     <h3> All Games </h3>
-    <% gameStats.forEach((game) => { %>
+    <% gameStats.reverse().forEach((game) => { %>
         <ul> <a href="/users/<%= user._id %>/games/<%= game._id %>">
             Game <%= game.number %> - <%= new Date (game.date).toDateString() %> - <%= game.result %> 
         </ul> </a>

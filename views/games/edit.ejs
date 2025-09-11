@@ -15,10 +15,10 @@
     <form action="/users/<%= user._id %>/games/<%= gameStats._id %>?_method=PUT" method = "POST">
         
         <label for="number">Game Number:</label>
-        <input type="number" name="number" id="number" value="<%= gameStats.number %>" />
+        <input type="number" name="number" id="number" value="<%= gameStats.number %>" required />
 
         <label for="date">Date:</label>
-        <input type="date" name="date" id="date" value="<%= gameStats.date.toISOString().slice(0,10) %>" />
+        <input type="date" name="date" id="date" value="<%= gameStats.date.toISOString().slice(0,10) %>" required />
         <!-- date value would not populate in edit form, so had to return value in format form was in (YYYY/MM/DD) 
          toISOString converts value to date time string format and slice (0,10) returns first 10 characters, which is what I need -->
 

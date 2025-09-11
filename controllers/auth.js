@@ -4,18 +4,26 @@ const bcrypt = require('bcrypt')
 
 const User = require('../models/user.js')
 
+/* ------ ROUTER LOGIC ------ */
+// "/auth" is the prefix for all routes
+    // established in server.js
+
+// GET ROUTES
+
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs')
-});
+})
 
 router.get('/sign-in', (req, res) => {
   res.render('auth/sign-in.ejs')
-});
+})
 
 router.get('/sign-out', (req, res) => {
   req.session.destroy()
   res.redirect('/')
 })
+
+// POST ROUTES
 
 router.post('/sign-up', async (req, res) => {
   try {
@@ -69,12 +77,15 @@ router.post('/sign-in', async (req, res) => {
       username: userInDatabase.username,
       _id: userInDatabase._id
     }
-  
     res.redirect('/players')
   } catch (error) {
     console.log(error)
     res.redirect('/')
   }
 })
+
+
+
+
 
 module.exports = router

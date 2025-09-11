@@ -15,10 +15,10 @@
     <form action="/users/<%= user._id %>/games" method = "POST">
         
         <label for="number">Game Number:</label>
-        <input type="number" name="number" id="number" />
+        <input type="number" name="number" id="number" required />
 
         <label for="date">Date:</label>
-        <input type="date" name="date" id="date" />
+        <input type="date" name="date" id="date" required />
 
         <label for="location">Location:</label>
         <select id="location" name="location">
@@ -35,7 +35,7 @@
         </select>
 
         <label for="goalDiff">Goal Difference</label>
-        <input type="number" name="goalDiff" id="goalDiff" />
+        <input type="number" name="goalDiff" id="goalDiff" required />
 
         <label for="goals">Goals:</label>
         <input type="goals" name="goals" id="goals" />

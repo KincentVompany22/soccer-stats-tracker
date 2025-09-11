@@ -84,6 +84,9 @@ router.get("/:gameId/edit", async (req, res) => {
     }
 } )
 
+router.get("")
+
+
 // POST ROUTES
 
 router.post("/", async (req, res) => {

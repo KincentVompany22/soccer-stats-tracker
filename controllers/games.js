@@ -149,8 +149,6 @@ router.put("/edit", async (req, res) => {
     }
 })
 
-
-
 // DELETE ROUTES
 
 //// Delete game
@@ -171,6 +169,8 @@ router.delete("/games/:gameId", async (req, res) => {
 router.delete("/", async (req, res) => {
     try {
         await User.findByIdAndDelete(req.session.user._id)
+        req.session.destroy()
+        res.redirect("/")
     } catch (error) {
         console.log(error)
         res.redirect("/")

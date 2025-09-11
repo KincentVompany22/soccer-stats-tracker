@@ -24,10 +24,6 @@ router.get('/sign-out', (req, res) => {
 })
 
 
-
-
-
-
 // POST ROUTES
 
 router.post('/sign-up', async (req, res) => {

@@ -94,7 +94,7 @@ router.get("/edit", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
         res.render("auth/edit-profile-page.ejs", { currentUser })
-        console.log(currentUser)
+        // console.log(currentUser)
     } catch (error) {
         console.log(error)
         res.redirect("/")

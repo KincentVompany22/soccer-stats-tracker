@@ -2,6 +2,8 @@
 
 ![PitchPulse Logo](public/images/pitch-pulse-logo.png)
 
+#### [Deployed App](https://pitchpulse-stats-tracker-64624263c55c.herokuapp.com/)
+
 ## Description
 
 This project is a browser-based soccer performance tracker called PitchPulse where users can “capture every pulse on the pitch.” After signing up, you can log each match by entering the game number, date, location, result, goal difference, goals and assists of your most recent game. Your personal dashboard displays every game in a list as well as calculates your total games, goals, assists, and win/loss/draw metrics alongside your averages (goals per game, assist rate, win percentage). Everything is stored in MongoDB, with intuitive forms for creating, editing and deleting entries, plus real-time updates so you always see your latest stats at a glance, perfect for spotting trends and measuring your progress over time. PitchPulse also allows you to view other members stats so you can see where you stand overall compared to your teammates and opponents!
